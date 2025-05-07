@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     border: 0;
@@ -7,31 +7,31 @@
     text-decoration: none;
     outline: none;
     font-family: Arial, Helvetica, sans-serif;
-}
-
-header{
+  }
+  
+  header {
     background-color: rgb(27, 118, 221);
-    padding: 16px 120px;   
-}
-
-header input{
+    padding: 16px 120px;
+  }
+  
+  header input {
     width: 100%;
     height: 60px;
     padding: 0 25px;
     border-radius: 8px;
     font-size: 18px;
     text-align: left;
-}
-
-body{
+  }
+  
+  body {
     background-color: #f5f5f5;
-}
-
-#tarefas{
+  }
+  
+  #tarefas {
     padding: 60px 120px;
-}
-
-#tarefas h2{
+  }
+  
+  #tarefas h2 {
     font-family: 'Courier New', Courier, monospace;
     display: flex;
     justify-content: space-between;
@@ -39,9 +39,9 @@ body{
     font-size: 48px;
     font-style: italic;
     color: rgb(27, 118, 221);
-}
-
-#tarefas h2 button{
+  }
+  
+  #tarefas h2 button {
     background-color: rgb(27, 118, 221);
     color: white;
     font-size: 12px;
@@ -53,58 +53,58 @@ body{
     border-radius: 5px;
     cursor: pointer;
     transition-duration: 200ms;
-}
-
-#tarefas h2 button:hover{
+  }
+  
+  #tarefas h2 button:hover {
     background-color: rgb(19, 88, 167);
-}
-
-#tarefas h6{
+  }
+  
+  #tarefas h6 {
     text-align: center;
     font-size: 24px;
     color: #999;
-}
-
-#tarefas ul{
+  }
+  
+  #tarefas ul {
     margin-top: 32px;
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-}
-
-#tarefas ul li{
+  }
+  
+  #tarefas ul li {
     width: calc(25% - 12px);
     padding: 16px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 5px 10px rgb(107, 107, 107);
     display: initial;
-}
-
-#tarefas ul li.oculto{
+  }
+  
+  #tarefas ul li.oculto {
     display: none;
-}
-
-#tarefas ul li h5{
+  }
+  
+  #tarefas ul li h5 {
     color: rgb(19, 88, 167);
     margin-bottom: 16px;
     font-size: 16px;
-}
-
-#tarefas ul li .t{
+  }
+  
+  #tarefas ul li .t {
     display: flex;
     justify-content: flex-end;
     fill: #999;
     margin-top: 16px;
     transition-duration: 200ms;
     cursor: pointer;
-}
-
-#tarefas ul li .t box-icon:hover{
+  }
+  
+  #tarefas ul li .t box-icon:hover {
     fill: rgb(27, 118, 221);
-}
-
-#overlay{
+  }
+  
+  #overlay {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -115,19 +115,19 @@ body{
     visibility: hidden;
     opacity: 0;
     transition-duration: 200ms;
-}
-
-#overlay.active{
+  }
+  
+  #overlay.active {
     opacity: 1;
     visibility: visible;
-}
-
-.modal.active{
+  }
+  
+  .modal.active {
     opacity: 1;
     visibility: visible;
-}
-
-.modal{
+  }
+  
+  .modal {
     width: 400px;
     background-color: white;
     padding: 16px;
@@ -140,38 +140,38 @@ body{
     visibility: hidden;
     opacity: 0;
     transition-duration: 200ms;
-}
-
-.modal form h3{
+  }
+  
+  .modal form h3 {
     font-size: 24px;
     color: #999;
     margin-bottom: 26px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.modal form h3 box-icon{
+  }
+  
+  .modal form h3 box-icon {
     fill: #999;
     cursor: pointer;
     transition-duration: 200ms;
-}
-
-.modal form h3 box-icon:hover{
+  }
+  
+  .modal form h3 box-icon:hover {
     fill: rgb(27, 118, 221);
-}
-
-.modal form label{
+  }
+  
+  .modal form label {
     display: block;
     font-size: 12px;
     font-weight: bold;
     letter-spacing: .75px;
     text-transform: uppercase;
     margin-bottom: 6px;
-}
-
-.modal form input,
-.modal form textarea{
+  }
+  
+  .modal form input,
+  .modal form textarea {
     width: 100%;
     height: 46px;
     border: 2px solid #dedede;
@@ -179,19 +179,19 @@ body{
     margin-bottom: 16px;
     padding-left: 10px;
     transition-duration: 200ms;
-}
-
-.modal form input:focus,
-.modal form textarea:focus{
+  }
+  
+  .modal form input:focus,
+  .modal form textarea:focus {
     border-color: skyblue;
-}
-
-.modal form textarea{
+  }
+  
+  .modal form textarea {
     padding-top: 10px;
     height: 120px;
-}
-
-.modal form button{
+  }
+  
+  .modal form button {
     width: 100%;
     background-color: rgb(27, 118, 221);
     color: white;
@@ -204,8 +204,52 @@ body{
     border-radius: 5px;
     cursor: pointer;
     transition-duration: 200ms;
-}
-
-.modal form button:hover{
-    background-color: rgb(19, 88, 167);   
-}
+  }
+  
+  .modal form button:hover {
+    background-color: rgb(19, 88, 167);
+  }
+  
+  /* Media Queries para dispositivos móveis */
+  @media (max-width: 768px) {
+    #tarefas h2 {
+      font-size: 36px;
+    }
+  
+    #tarefas ul {
+      justify-content: center;
+    }
+  
+    #tarefas ul li {
+      width: calc(50% - 12px);
+    }
+  
+    .modal {
+      width: 90%;
+      max-width: 400px;
+    }
+  
+    header {
+      padding: 16px 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #tarefas h2 {
+      font-size: 28px;
+    }
+  
+    #tarefas ul li {
+      width: 100%;
+    }
+  
+    .modal {
+      width: 90%;
+      max-width: 300px;
+    }
+  
+    header input {
+      font-size: 16px;
+    }
+  }
+  
