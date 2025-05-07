@@ -11,15 +11,15 @@
   
   header {
     background-color: rgb(27, 118, 221);
-    padding: 16px 120px;
+    padding: 16px 20px;  /* Ajuste de padding */
   }
   
   header input {
     width: 100%;
-    height: 60px;
-    padding: 0 25px;
+    height: 40px;
+    padding: 0 15px;
     border-radius: 8px;
-    font-size: 18px;
+    font-size: 16px; /* Ajuste de tamanho da fonte */
     text-align: left;
   }
   
@@ -28,7 +28,7 @@
   }
   
   #tarefas {
-    padding: 60px 120px;
+    padding: 60px 20px; /* Ajuste de padding */
   }
   
   #tarefas h2 {
@@ -36,9 +36,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 48px;
+    font-size: 36px;  /* Ajuste da fonte */
     font-style: italic;
     color: rgb(27, 118, 221);
+    margin-bottom: 20px;  /* Espaçamento inferior */
   }
   
   #tarefas h2 button {
@@ -48,8 +49,8 @@
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: .75px;
-    height: 46px;
-    padding: 0 26px;
+    height: 40px;  /* Ajuste da altura */
+    padding: 0 16px;
     border-radius: 5px;
     cursor: pointer;
     transition-duration: 200ms;
@@ -59,26 +60,22 @@
     background-color: rgb(19, 88, 167);
   }
   
-  #tarefas h6 {
-    text-align: center;
-    font-size: 24px;
-    color: #999;
-  }
-  
   #tarefas ul {
     margin-top: 32px;
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+    justify-content: space-between;  /* Ajuste do alinhamento */
   }
   
   #tarefas ul li {
-    width: calc(25% - 12px);
+    width: calc(33.33% - 12px);
     padding: 16px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 5px 10px rgb(107, 107, 107);
     display: initial;
+    margin-bottom: 16px;
   }
   
   #tarefas ul li.oculto {
@@ -88,7 +85,7 @@
   #tarefas ul li h5 {
     color: rgb(19, 88, 167);
     margin-bottom: 16px;
-    font-size: 16px;
+    font-size: 14px; /* Ajuste de tamanho */
   }
   
   #tarefas ul li .t {
@@ -143,7 +140,7 @@
   }
   
   .modal form h3 {
-    font-size: 24px;
+    font-size: 20px;
     color: #999;
     margin-bottom: 26px;
     display: flex;
@@ -211,41 +208,48 @@
   }
   
   /* Media Queries para dispositivos móveis */
+  
   @media (max-width: 768px) {
-    #tarefas h2 {
-      font-size: 36px;
-    }
-  
-    #tarefas ul {
-      justify-content: center;
-    }
-  
-    #tarefas ul li {
-      width: calc(50% - 12px);
-    }
-  
-    .modal {
-      width: 90%;
-      max-width: 400px;
-    }
-  
-    header {
-      padding: 16px 20px;
-    }
-  }
-  
-  @media (max-width: 480px) {
     #tarefas h2 {
       font-size: 28px;
     }
   
     #tarefas ul li {
+      width: calc(50% - 12px); /* Ajuste para telas médias */
+    }
+  
+    .modal {
+      width: 90%;
+      max-width: 350px;
+    }
+  
+    header input {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #tarefas h2 {
+      font-size: 22px;
+    }
+  
+    #tarefas ul {
+      display: block;
       width: 100%;
+    }
+  
+    #tarefas ul li {
+      width: 100%;  /* Tarefas vão ocupar toda a largura da tela */
+      margin-bottom: 16px;
     }
   
     .modal {
       width: 90%;
       max-width: 300px;
+    }
+  
+    header {
+      padding: 16px;
     }
   
     header input {
