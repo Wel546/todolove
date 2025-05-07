@@ -65,7 +65,7 @@ function deletarTarefa(id){
         alert("tarefa deletada com sucesso");
         buscarTarefas();
     }) 
-}
+} buscarTarefas()
 
 function pesquisarTarefa(){
     let lis = document.querySelectorAll("ul li");
