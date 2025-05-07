@@ -1,67 +1,91 @@
-function abrirModal(){
-    overlay.classList.add("active");
-    criarTarefa.classList.add("active");
+// Seletores
+const titulo = document.getElementById("titulo");
+const descricao = document.getElementById("descricao");
+const lista = document.getElementById("lista");
+const overlay = document.getElementById("overlay");
+const criarTarefa = document.getElementById("criarTarefa");
+const busca = document.getElementById("busca");
+
+// Modal
+function abrirModal() {
+  overlay.classList.add("active");
+  criarTarefa.classList.add("active");
 }
 
-function fecharModal(){
-    overlay.classList.remove("active");
-    criarTarefa.classList.remove("active");
+function fecharModal() {
+  overlay.classList.remove("active");
+  criarTarefa.classList.remove("active");
 }
 
-function buscarTarefas(){
-    const tarefasSalvas = JSON.parse(localStorage.getItem("tarefas")) || [];
-    inserirTarefas(tarefasSalvas);
+// Buscar tarefas
+function buscarTarefas() {
+  const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+  inserirTarefas(tarefas);
 }
 
+// Inserir tarefas na tela
+function inserirTarefas(tarefas) {
+  lista.innerHTML = "";
 
-    function inserirTarefas(listaDeTarefas){
-        if(listaDeTarefas.length > 0){
-            lista.innerHTML = ""
-            listaDeTarefas.map(tarefa => {
-                lista.innerHTML += `
-                <li>
-                    <h5>${tarefa.titulo}</h5>
-                    <p>${tarefa.descricao}</p>
-                    <div class="t"> 
-                        <box-icon name='trash-alt' onclick="deletarTarefa(${tarefa.id})"></box-icon> 
-                    </div>
-                </li>
-                `
-            })
-        }
-    }
+  if (tarefas.length === 0) {
+    lista.innerHTML = "<h6>Nenhuma tarefa registrada</h6>";
+    return;
+  }
 
-function novaTarefa(){
-    event.preventDefault();
-    
-    let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
-    
-            document.querySelector("#criarTarefa form").reset();
+  tarefas.forEach(tarefa => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <h5>${tarefa.titulo}</h5>
+      <p>${tarefa.descricao}</p>
+      <div class="t">
+        <box-icon name='trash-alt' onclick="deletarTarefa(${tarefa.id})"></box-icon>
+      </div>
+    `;
+    lista.appendChild(li);
+  });
 }
-    
 
-function deletarTarefa(id){
-        let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
-        tarefas = tarefas.filter(tarefa => tarefa.id !== id);
-        localStorage.setItem("tarefas", JSON.stringify(tarefas));
-        buscarTarefas();
-}
-    
+// Criar nova tarefa
+function novaTarefa(event) {
+  event.preventDefault();
 
-function pesquisarTarefa(){
-    let lis = document.querySelectorAll("ul li");
-    console.log(lis);
-    if(busca.value.length > 0){
-        lis.forEach(li => {
-            if(!li.children[0].innerText.includes(busca.value)){
-                li.classList.add('oculto');
-            }else{
-                li.classList.remove('oculto');
-            }
-        })   
-    } else {
-        lis.forEach(li => {
-            li.classList.remove('oculto');
-        })   
-    }
+  const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+
+  const nova = {
+    id: Date.now(),
+    titulo: titulo.value.trim(),
+    descricao: descricao.value.trim()
+  };
+
+  if (nova.titulo && nova.descricao) {
+    tarefas.push(nova);
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+    fecharModal();
+    buscarTarefas();
+    document.querySelector("#criarTarefa form").reset();
+  } else {
+    alert("Preencha todos os campos!");
+  }
 }
+
+// Deletar tarefa
+function deletarTarefa(id) {
+  let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+  tarefas = tarefas.filter(t => t.id !== id);
+  localStorage.setItem("tarefas", JSON.stringify(tarefas));
+  buscarTarefas();
+}
+
+// Pesquisar tarefas
+function pesquisarTarefa() {
+  const termo = busca.value.toLowerCase();
+  const itens = document.querySelectorAll("#lista li");
+
+  itens.forEach(item => {
+    const titulo = item.querySelector("h5").innerText.toLowerCase();
+    item.classList.toggle("oculto", !titulo.includes(termo));
+  });
+}
+
+// Inicializar
+buscarTarefas();

@@ -1,35 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todolove</title>
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Todolove</title>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <header>
-        <input type="text" id="busca" onkeyup="pesquisarTarefa()" placeholder="Pesquisar por titulo">
-    </header>
-    <main>
-        <section id="tarefas">
-            <h2>Tarefas <button onclick="abrirModal()">Nova tarefa</button></h2>
-            <!-- <h6>Nehuma tarefa registrada</h6> -->
-             <ul id="lista"></ul>
-        </section>
-        <section id="overlay" onclick="fecharModal()"></section>
-        <div id="criarTarefa" class="modal">
-            <form onsubmit="novaTarefa()">
-                <h3>Criar tarefa <box-icon name='x-circle' onclick="fecharModal()"></box-icon></h3>
-                <label for="titulo">Titulo</label>
-                <input type="text" id="titulo" required>
-                <label for="descricao">Descrição</label>
-                <textarea id="descricao" required></textarea>
-                <button>Criar
-                </button>
-            </form>
-        </div>
-    </main>
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <script src="index.js"></script>
+  <header>
+    <input type="text" id="busca" onkeyup="pesquisarTarefa()" placeholder="Pesquisar por título">
+  </header>
+
+  <main>
+    <section id="tarefas">
+      <h2>
+        Tarefas
+        <button onclick="abrirModal()">Nova tarefa</button>
+      </h2>
+      <ul id="lista"></ul>
+    </section>
+
+    <section id="overlay" onclick="fecharModal()"></section>
+    <div id="criarTarefa" class="modal">
+      <form onsubmit="novaTarefa(event)">
+        <h3>
+          Criar tarefa
+          <box-icon name='x-circle' onclick="fecharModal()"></box-icon>
+        </h3>
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" required>
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" required></textarea>
+        <button type="submit">Criar</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
