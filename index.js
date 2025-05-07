@@ -9,12 +9,10 @@ function fecharModal(){
 }
 
 function buscarTarefas(){
-    fetch("http://localhost:3000/tarefas")
-    .then(res => res.json())
-    .then(res => {
-        inserirTarefas(res);
-    })
-} buscarTarefas()
+    const tarefasSalvas = JSON.parse(localStorage.getItem("tarefas")) || [];
+    inserirTarefas(tarefasSalvas);
+}
+
 
     function inserirTarefas(listaDeTarefas){
         if(listaDeTarefas.length > 0){
@@ -35,37 +33,20 @@ function buscarTarefas(){
 
 function novaTarefa(){
     event.preventDefault();
-    let tarefa = {
-        titulo: titulo.value,
-        descricao: descricao.value
-    }
-    fetch("http://localhost:3000/tarefas",{
-        method: "POST",
-        headers: {
-            "Content-type": "application/json"
-        },
-        body: JSON.stringify(tarefa)
-    })
-    .then(res => res.json())
-    .then(res => {
-        fecharModal();
-        buscarTarefas();
-        let form = document.querySelector("#criarTarefa form");
-        form.reset();
-    })
-
+    
+    let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+    
+            document.querySelector("#criarTarefa form").reset();
 }
+    
 
 function deletarTarefa(id){
-    fetch(`http://localhost:3000/tarefas/${id}`,{
-        method: "DELETE",
-    })
-    .then(res => res.json())
-    .then(res => {
-        alert("tarefa deletada com sucesso");
+        let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+        tarefas = tarefas.filter(tarefa => tarefa.id !== id);
+        localStorage.setItem("tarefas", JSON.stringify(tarefas));
         buscarTarefas();
-    }) 
-} buscarTarefas()
+}
+    
 
 function pesquisarTarefa(){
     let lis = document.querySelectorAll("ul li");
